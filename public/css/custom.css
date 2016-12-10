@@ -1,0 +1,17 @@
+body {
+  padding-top: 50px;
+}
+
+html, body, .container-fluid, .full-height {
+  height: 100%;
+}
+
+#task-zone {
+  padding-top: 15px;
+  border-right: 4px solid #e7e7e7;
+  max-width: 300px;
+}
+
+#schedule-zone {
+  padding-top: 15px;
+}
