@@ -8,10 +8,24 @@ html, body, .container-fluid, .full-height {
 
 #task-zone {
   padding-top: 15px;
-  border-right: 4px solid #e7e7e7;
-  max-width: 300px;
+  border-right: 4px dashed #e7e7e7;
+  overflow-y: auto;
+  /*max-width: 350px;*/
 }
 
 #schedule-zone {
-  padding-top: 15px;
+  padding: 0px;
+  overflow-y: auto;
+  /*width: 100%*/
 }
+
+
+/*table {
+  border: none; border-collapse: collapse;
+}
+table td {
+  border: 1px solid #000;
+}
+table td:first-child {
+  border-left: none;
+}*/
