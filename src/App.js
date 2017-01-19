@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
-// import logo from './logo.svg';
+
+//import premade components
+import TaskBar from './TaskBar';
+import TaskList from './TaskList';
+import Table from './Table';
+
+var DragDropContext = require('react-dnd').DragDropContext;
+var HTML5Backend = require('react-dnd-html5-backend');
+// import ReactCSSTransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import './App.css';
 
 class App extends Component {
@@ -13,18 +20,6 @@ class App extends Component {
         //   date: "12/9/16",
         //   key: 1,
         //   id: 1
-        // },
-        // {
-        //   text: "Test",
-        //   date: "12/10/16",
-        //   key: 2,
-        //   id: 2
-        // },
-        // {
-        //   text: "Yes yes yes",
-        //   date: "12/11/16",
-        //   key: 3,
-        //   id: 3
         // }
       ]
     };
@@ -82,79 +77,5 @@ class App extends Component {
     }
   }
 }
-
-class TaskBar extends Component {
-  render() {
-    return <input type="text" className="task-bar" placeholder="Add Task" onKeyPress={this.props.onEnter}/>
-  }
-}
-
-class TaskList extends Component {
-  render() {
-    var tasks = this.props.tasks;
-    var onClick = this.props.onClick;
-    function createTask(task) {
-      return (
-        <li className="task_item" key={task.key} id={task.id}>
-          <div className="task_text">{task.text}</div>
-          <div className="task_bottom">
-            <button className="close" onClick={onClick}>X</button>
-            <div className="due_date">
-            {task.date}
-            </div>
-          </div>
-        </li>
-      )
-
-    }
-
-    var taskList = tasks.map(createTask);
-    return (
-      <ul className="task_list">
-        {taskList}
-      </ul>
-    )
-  }
-}
-
-  class Table extends Component {
-    render() {
-      var rows = [];
-      var task = "Finish washing dishes overflow we go go and go and overflow and if we overflow too much then we have big problems lots of big problems uh oh uh oh";
-      // rows.push(<TableRow time = {-12}/>)
-      for (var i=0; i < 24; i++) {
-        rows.push(<TableRow key={i} time={i} task={task}/>);
-      }
-      return (
-      <table className="schedule-table">
-        <tbody>
-          {rows}
-        </tbody>
-      </table>)
-    }
-  }
-
-  class TableRow extends Component {
-    render() {
-
-      //set time correctly from props
-      var time = "";
-      if(this.props.time > 12)
-        time = this.props.time - 12 + ":00 pm";
-      else if(this.props.time === 12)
-        time = this.props.time + ":00 pm";
-      else if(this.props.time === 0)
-        time =  "12:00 am";
-      else
-        time = this.props.time + ":00 am";
-
-      return (
-        <tr className="table-row">
-          <td className="time-data">{time}</td>
-          <td>{this.props.task}</td>
-        </tr>
-      );
-    }
-  }
 
 export default App;
